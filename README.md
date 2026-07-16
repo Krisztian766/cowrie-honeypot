@@ -1,9 +1,51 @@
 # Cowrie Honeypot – VPS Deployment
 
 Lightweight [Cowrie](https://github.com/cowrie/cowrie) SSH/Telnet honeypot running on a small
-production VPS (1 vCPU / 2GB RAM), deployed for passive real-world malware collection.
+production VPS (1 vCPU / 2GB RAM), deployed for passive real-world malware collection, with
+custom Telegram alerting and automated dropper-chain follow-through.
 
-## Layout
+## At a glance
+
+| | |
+|---|---|
+| Login attempts logged | 6,997 (6,746 "successful" — Cowrie accepts everything by design) |
+| Unique attacker source IPs | 185 |
+| Unique username/password combos tried | 530 |
+| Unique malware/dropper samples captured | 19 |
+| Distinct attack chains identified | 2 (SSH persistence worm, Mirai/gafgyt Telnet dropper) |
+| Distinct C2 servers observed | 2 (`205.237.110.232`, `45.150.195.235`) |
+
+Top offenders (see `data/attacker_ips_full.txt` / `data/credentials_full.txt` for the complete
+lists, not just these top few):
+
+```
+2012  92.204.138.51
+1747  5.61.209.43
+ 895  205.237.110.232   (also one of the two Mirai C2s below)
+ 745  132.148.29.10
+ 378  70.32.86.195
+
+ 280  root / vizxv               [also used successfully]
+ 270  admin / admin              [also used successfully]
+ 249  root / xc3511               [also used successfully]
+ 226  enable / linuxshell         [also used successfully]
+ 218  support / support           [also used successfully]
+```
+
+## Repo layout
+
+```
+config/     cowrie.cfg, userdb.txt, docker-compose.yml — the honeypot itself
+code/       telegram_notify.py, telegram_summary.py, check_status.sh — alerting/reporting
+systemd/    the notifier service + 6-hourly summary timer/service
+logrotate/  logrotate config (copytruncate) for the JSON event log
+data/       seen_hashes.json, fetched_urls.json — notifier state/dedup caches
+            attacker_ips_full.txt, credentials_full.txt — full (not top-N) breakdowns
+logs/       raw Cowrie JSON event logs, all 4 rotations (~129MB total)
+samples/    samples.zip — all 19 captured files, password-protected (see below)
+```
+
+## Honeypot setup
 
 - **Telnet (23)** and a decoy **SSH (2222)** are the honeypot ports. The box's *real* SSH stays on
   port 22, untouched — there was no out-of-band console access to the host, so any risk of an SSH
@@ -68,10 +110,17 @@ Samples are provided **for static analysis only** — never execute them, includ
 VirusTotal's `/files/{hash}/behaviours` endpoint (already-sandboxed) or an isolated VM/container
 is the recommended way to get dynamic behavior data.
 
+## Raw data (`logs/`, `data/`)
+
+- `logs/cowrie.json*` — the complete, unfiltered event log across all 4 rotations captured so far:
+  every login attempt, session, download, and command with timestamp and source IP. This is the
+  source of truth everything else in `data/` is derived from.
+- `data/attacker_ips_full.txt` / `data/credentials_full.txt` — full breakdowns (not just a top-N
+  sample) of every unique attacker IP and every unique username/password combination tried,
+  regenerated from the raw logs above.
+
 ## Explicitly excluded from this repo
 
 - `secrets/telegram.env` (Telegram bot token, chat ID, VirusTotal API key) — real credentials,
-  never committed.
-- Raw Cowrie JSON logs (hundreds of MB, mostly brute-force noise plus real attacker source IPs) —
-  not needed to understand the setup; `data/seen_hashes.json` and `data/fetched_urls.json` carry
-  the useful summarized state instead.
+  never committed, `.gitignore`d as a backstop. This is the one boundary kept firm regardless of
+  what else gets published here.
