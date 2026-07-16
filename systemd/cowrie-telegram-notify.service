@@ -1,0 +1,16 @@
+[Unit]
+Description=Cowrie honeypot Telegram malware-letoltes ertesito
+After=docker.service
+Wants=docker.service
+
+[Service]
+Type=simple
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/opt/cowrie/secrets/telegram.env
+ExecStart=/usr/bin/python3 /opt/cowrie/telegram_notify.py
+Restart=always
+RestartSec=10
+User=root
+
+[Install]
+WantedBy=multi-user.target
