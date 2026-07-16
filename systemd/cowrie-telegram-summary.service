@@ -1,0 +1,9 @@
+[Unit]
+Description=Cowrie honeypot Telegram idoszakos osszefoglalo
+After=docker.service
+
+[Service]
+Type=oneshot
+EnvironmentFile=/opt/cowrie/secrets/telegram.env
+ExecStart=/usr/bin/python3 /opt/cowrie/telegram_summary.py
+User=root
