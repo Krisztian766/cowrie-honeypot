@@ -8,28 +8,29 @@ custom Telegram alerting and automated dropper-chain follow-through.
 
 | | |
 |---|---|
-| Login attempts logged | 6,997 (6,746 "successful" — Cowrie accepts everything by design) |
-| Unique attacker source IPs | 185 |
-| Unique username/password combos tried | 530 |
-| Unique malware/dropper samples captured | 19 |
+| Login attempts logged | 318,934 (318,020 "successful" — Cowrie accepts everything by design) |
+| Unique attacker source IPs | 1,846 |
+| Unique username/password combos tried | 16,488 |
+| Unique malware/dropper samples captured | 60 |
 | Distinct attack chains identified | 2 (SSH persistence worm, Mirai/gafgyt Telnet dropper) |
 | Distinct C2 servers observed | 2 (`205.237.110.232`, `45.150.195.235`) |
+| Coverage window | 2026-07-14 → 2026-07-29 (ongoing) |
 
 Top offenders (see `data/attacker_ips_full.txt` / `data/credentials_full.txt` for the complete
 lists, not just these top few):
 
 ```
-2012  92.204.138.51
-1747  5.61.209.43
- 895  205.237.110.232   (also one of the two Mirai C2s below)
- 745  132.148.29.10
- 378  70.32.86.195
+1212556  5.61.209.44
+ 744580  5.61.209.43
+ 100143  45.160.191.59
+  57436  175.107.228.121
+  55030  139.135.46.20
 
- 280  root / vizxv               [also used successfully]
- 270  admin / admin              [also used successfully]
- 249  root / xc3511               [also used successfully]
- 226  enable / linuxshell         [also used successfully]
- 218  support / support           [also used successfully]
+   7999  root / hi3518                [also used successfully]
+   7235  Alphanetworks / Wj5eH%JC     [also used successfully]
+   6294  default / antslq             [also used successfully]
+   6215  guest / 12345                [also used successfully]
+   6179  vstarcam2015 / 20150602      [also used successfully]
 ```
 
 ## Repo layout
@@ -41,8 +42,8 @@ systemd/    the notifier service + 6-hourly summary timer/service
 logrotate/  logrotate config (copytruncate) for the JSON event log
 data/       seen_hashes.json, fetched_urls.json — notifier state/dedup caches
             attacker_ips_full.txt, credentials_full.txt — full (not top-N) breakdowns
-logs/       raw Cowrie JSON event logs, all 4 rotations (~129MB total)
-samples/    samples.zip — all 19 captured files, password-protected (see below)
+logs/       raw Cowrie JSON event logs, gzip-compressed, all rotations 2026-07-14→present (~63MB)
+samples/    samples.zip — all 60 captured files, password-protected (see below)
 ```
 
 ## Honeypot setup
@@ -112,9 +113,11 @@ is the recommended way to get dynamic behavior data.
 
 ## Raw data (`logs/`, `data/`)
 
-- `logs/cowrie.json*` — the complete, unfiltered event log across all 4 rotations captured so far:
-  every login attempt, session, download, and command with timestamp and source IP. This is the
-  source of truth everything else in `data/` is derived from.
+- `logs/cowrie.json*.gz` — the complete, unfiltered event log across every rotation captured so
+  far (2026-07-14 → present): every login attempt, session, download, and command with timestamp
+  and source IP. Gzip-compressed (10-20x) to stay well under GitHub's per-file limit as the raw
+  logs grew past several hundred MB/day at peak traffic; this is the source of truth everything
+  else in `data/` is derived from.
 - `data/attacker_ips_full.txt` / `data/credentials_full.txt` — full breakdowns (not just a top-N
   sample) of every unique attacker IP and every unique username/password combination tried,
   regenerated from the raw logs above.
