@@ -4,33 +4,39 @@ Lightweight [Cowrie](https://github.com/cowrie/cowrie) SSH/Telnet honeypot runni
 production VPS (1 vCPU / 2GB RAM), deployed for passive real-world malware collection, with
 custom Telegram alerting and automated dropper-chain follow-through.
 
+**[Live threat report →](https://krisztian766.github.io/cowrie-honeypot/)** — auto-generated
+charts of attack volume over time, attacker countries, top credentials, and identified malware
+families, built straight from the raw logs in this repo (`code/generate_report.py` +
+`code/geoip_lookup.py` + `code/render_report.py`).
+
 ## At a glance
 
 | | |
 |---|---|
-| Login attempts logged | 318,934 (318,020 "successful" — Cowrie accepts everything by design) |
-| Unique attacker source IPs | 1,846 |
-| Unique username/password combos tried | 16,488 |
-| Unique malware/dropper samples captured | 60 |
-| Distinct attack chains identified | 2 (SSH persistence worm, Mirai/gafgyt Telnet dropper) |
+| Total events logged | 5,813,788 |
+| Login attempts logged | 577,143 |
+| Unique attacker source IPs | 2,381 |
+| Unique username/password combos tried | 27,960 |
+| Unique malware/dropper samples captured | 87 |
+| Distinct attack chains identified | 4 (see the [live report](https://krisztian766.github.io/cowrie-honeypot/) for the full family/C2 table) |
 | Distinct C2 servers observed | 2 (`205.237.110.232`, `45.150.195.235`) |
-| Coverage window | 2026-07-14 → 2026-07-29 (ongoing) |
+| Coverage window | 2026-07-14 → 2026-08-06 (ongoing) |
 
 Top offenders (see `data/attacker_ips_full.txt` / `data/credentials_full.txt` for the complete
 lists, not just these top few):
 
 ```
+1760441  195.182.16.23
 1212556  5.61.209.44
- 744580  5.61.209.43
- 100143  45.160.191.59
-  57436  175.107.228.121
-  55030  139.135.46.20
+ 218099  8.134.58.87
+ 186920  36.67.6.139
+ 153681  123.129.134.146
 
-   7999  root / hi3518                [also used successfully]
-   7235  Alphanetworks / Wj5eH%JC     [also used successfully]
-   6294  default / antslq             [also used successfully]
-   6215  guest / 12345                [also used successfully]
-   6179  vstarcam2015 / 20150602      [also used successfully]
+  13995  Alphanetworks / Wj5eH%JC     [also used successfully]
+  12401  guest / 12345                [also used successfully]
+   9830  root / 12345                 [also used successfully]
+   9616  root / 7ujMko0vizxv          [also used successfully]
+   9336  GlobalAdmin / GlobalAdmin    [also used successfully]
 ```
 
 ## Repo layout
@@ -38,13 +44,33 @@ lists, not just these top few):
 ```
 config/     cowrie.cfg, userdb.txt, docker-compose.yml — the honeypot itself
 code/       telegram_notify.py, telegram_summary.py, check_status.sh — alerting/reporting
+            generate_report.py, geoip_lookup.py, render_report.py — threat-report pipeline
+docs/       index.html — the static live report (served via GitHub Pages)
 systemd/    the notifier service + 6-hourly summary timer/service
 logrotate/  logrotate config (copytruncate) for the JSON event log
 data/       seen_hashes.json, fetched_urls.json — notifier state/dedup caches
             attacker_ips_full.txt, credentials_full.txt — full (not top-N) breakdowns
-logs/       raw Cowrie JSON event logs, gzip-compressed, all rotations 2026-07-14→present (~63MB)
-samples/    samples.zip — all 60 captured files, password-protected (see below)
+            daily_volume.json, ip_counts.json, ip_geo.json, country_totals.json,
+            credential_counts.json, downloads_timeline.json, malware_classification.json —
+            structured data behind the live report
+logs/       raw Cowrie JSON event logs, gzip-compressed, all rotations 2026-07-14→present
+samples/    samples.zip — all 87 captured files, password-protected (see below)
 ```
+
+## Threat report pipeline (`code/generate_report.py`, `geoip_lookup.py`, `render_report.py`)
+
+Three scripts turn the raw logs into the [live report](https://krisztian766.github.io/cowrie-honeypot/):
+
+1. **`generate_report.py`** — single full pass over every log rotation in `/opt/cowrie/log`
+   (plain + gzip), producing daily event/login volume, per-IP totals, credential combo
+   totals, and the malware download timeline.
+2. **`geoip_lookup.py`** — batch-geolocates every unique attacker IP via
+   [ip-api.com](https://ip-api.com)'s free batch endpoint (no key needed), weighted by each
+   IP's actual event count so the country ranking reflects attack volume, not just IP count.
+3. **`render_report.py`** — renders `docs/index.html`: a single self-contained static page
+   (inline SVG charts, no external JS/CSS/fonts/CDN) so it loads fast and keeps working even
+   if this repo goes fully offline. Re-run all three, then commit `data/` and `docs/`, to
+   refresh the live report.
 
 ## Honeypot setup
 
