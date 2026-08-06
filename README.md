@@ -112,6 +112,11 @@ Three scripts turn the raw logs into the [live report](https://krisztian766.gith
 
 - `cowrie-telegram-notify.service` — long-running notifier, `Restart=always`.
 - `cowrie-telegram-summary.timer` / `.service` — 6-hourly summary.
+- `cowrie-report-refresh.timer` / `.service` — **daily** (04:00 UTC + random delay) full
+  re-run of the report pipeline (`generate_report.py` → `geoip_lookup.py` → `render_report.py`),
+  followed by an automatic `git commit` + `push` if `data/`/`docs/` changed. This is what keeps
+  the [live report](https://krisztian766.github.io/cowrie-honeypot/) live rather than a one-time
+  snapshot. Runner script: `code/refresh_report.sh`.
 - `logrotate/cowrie` — daily rotation, 14-day retention, `copytruncate` (Cowrie also does its own
   internal daily rotation independently — see the `follow()` note above).
 

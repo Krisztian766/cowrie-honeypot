@@ -1,0 +1,10 @@
+[Unit]
+Description=Refresh the Cowrie honeypot live threat report and push to GitHub
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/cowrie/refresh_report.sh
+User=root
+Environment=PYTHONUNBUFFERED=1
