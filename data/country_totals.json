@@ -1,7 +1,7 @@
 [
   {
     "country": "Germany",
-    "events": 1787766,
+    "events": 1787856,
     "unique_ips": 49
   },
   {
@@ -16,8 +16,8 @@
   },
   {
     "country": "China",
-    "events": 575538,
-    "unique_ips": 380
+    "events": 575600,
+    "unique_ips": 381
   },
   {
     "country": "Indonesia",
@@ -31,8 +31,8 @@
   },
   {
     "country": "Chile",
-    "events": 106087,
-    "unique_ips": 13
+    "events": 106143,
+    "unique_ips": 14
   },
   {
     "country": "India",
@@ -46,8 +46,8 @@
   },
   {
     "country": "Ukraine",
-    "events": 19001,
-    "unique_ips": 376
+    "events": 19061,
+    "unique_ips": 378
   },
   {
     "country": "Russia",
@@ -61,12 +61,12 @@
   },
   {
     "country": "Brazil",
-    "events": 3418,
-    "unique_ips": 113
+    "events": 3424,
+    "unique_ips": 114
   },
   {
     "country": "Turkey",
-    "events": 2594,
+    "events": 2608,
     "unique_ips": 5
   },
   {
@@ -126,8 +126,8 @@
   },
   {
     "country": "Morocco",
-    "events": 712,
-    "unique_ips": 22
+    "events": 768,
+    "unique_ips": 23
   },
   {
     "country": "Belgium",
@@ -161,8 +161,8 @@
   },
   {
     "country": "Hong Kong",
-    "events": 311,
-    "unique_ips": 22
+    "events": 313,
+    "unique_ips": 23
   },
   {
     "country": "Malaysia",
