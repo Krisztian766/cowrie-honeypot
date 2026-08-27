@@ -1,58 +1,68 @@
 [
   {
     "country": "Pakistan",
-    "events": 2182229,
+    "events": 2096804,
     "unique_ips": 147
   },
   {
     "country": "China",
-    "events": 330945,
-    "unique_ips": 428
+    "events": 318690,
+    "unique_ips": 427
   },
   {
     "country": "The Netherlands",
-    "events": 163834,
-    "unique_ips": 84
+    "events": 157689,
+    "unique_ips": 83
   },
   {
     "country": "Germany",
-    "events": 151007,
-    "unique_ips": 77
+    "events": 153129,
+    "unique_ips": 73
   },
   {
     "country": "United States",
-    "events": 136657,
-    "unique_ips": 436
+    "events": 140595,
+    "unique_ips": 420
+  },
+  {
+    "country": "Hong Kong",
+    "events": 118262,
+    "unique_ips": 33
   },
   {
     "country": "Indonesia",
-    "events": 34940,
+    "events": 34946,
     "unique_ips": 34
   },
   {
     "country": "Russia",
-    "events": 19503,
-    "unique_ips": 170
-  },
-  {
-    "country": "India",
-    "events": 14876,
-    "unique_ips": 58
-  },
-  {
-    "country": "Ukraine",
-    "events": 12701,
-    "unique_ips": 259
+    "events": 19410,
+    "unique_ips": 167
   },
   {
     "country": "Morocco",
-    "events": 12555,
-    "unique_ips": 29
+    "events": 12541,
+    "unique_ips": 25
   },
   {
-    "country": "Argentina",
-    "events": 3780,
-    "unique_ips": 213
+    "country": "Ukraine",
+    "events": 12062,
+    "unique_ips": 240
+  },
+  {
+    "country": "India",
+    "events": 9739,
+    "unique_ips": 55
+  },
+  {
+    "country": "Sweden",
+    "events": 7543,
+    "unique_ips": 19
+  },
+  {
+    "country": "South Korea",
+    "events": 3771,
+    "unique_ips": 55
   },
   {
     "country": "Algeria",
@@ -60,84 +70,74 @@
     "unique_ips": 3
   },
   {
-    "country": "South Korea",
-    "events": 3354,
-    "unique_ips": 50
-  },
-  {
     "country": "Brazil",
-    "events": 2577,
+    "events": 2440,
     "unique_ips": 103
   },
   {
-    "country": "Turkey",
-    "events": 2420,
-    "unique_ips": 15
+    "country": "Canada",
+    "events": 2401,
+    "unique_ips": 44
   },
   {
-    "country": "Canada",
-    "events": 2413,
-    "unique_ips": 43
+    "country": "Turkey",
+    "events": 2357,
+    "unique_ips": 13
   },
   {
     "country": "Italy",
-    "events": 1937,
-    "unique_ips": 52
+    "events": 1956,
+    "unique_ips": 53
   },
   {
-    "country": "Kenya",
-    "events": 1895,
-    "unique_ips": 12
-  },
-  {
-    "country": "Sweden",
-    "events": 1221,
-    "unique_ips": 11
+    "country": "Argentina",
+    "events": 1860,
+    "unique_ips": 203
   },
   {
     "country": "United Kingdom",
-    "events": 1053,
-    "unique_ips": 59
+    "events": 1089,
+    "unique_ips": 62
   },
   {
     "country": "France",
-    "events": 1051,
-    "unique_ips": 48
+    "events": 1031,
+    "unique_ips": 44
   },
   {
     "country": "Ethiopia",
-    "events": 981,
+    "events": 975,
     "unique_ips": 5
   },
   {
-    "country": "Georgia",
-    "events": 960,
+    "country": "Kenya",
+    "events": 975,
     "unique_ips": 12
+  },
+  {
+    "country": "Georgia",
+    "events": 966,
+    "unique_ips": 13
   },
   {
     "country": "Hungary",
-    "events": 959,
-    "unique_ips": 14
+    "events": 955,
+    "unique_ips": 12
   },
   {
     "country": "T\u00fcrkiye",
-    "events": 871,
-    "unique_ips": 21
-  },
-  {
-    "country": "Iran",
-    "events": 737,
-    "unique_ips": 18
+    "events": 877,
+    "unique_ips": 22
   },
   {
     "country": "Belgium",
-    "events": 728,
+    "events": 840,
     "unique_ips": 29
   },
   {
-    "country": "Armenia",
-    "events": 639,
-    "unique_ips": 12
+    "country": "Iran",
+    "events": 697,
+    "unique_ips": 19
   },
   {
     "country": "Czechia",
@@ -145,19 +145,24 @@
     "unique_ips": 4
   },
   {
-    "country": "Japan",
-    "events": 581,
-    "unique_ips": 18
-  },
-  {
-    "country": "Taiwan",
-    "events": 559,
-    "unique_ips": 20
-  },
-  {
     "country": "Andorra",
     "events": 542,
     "unique_ips": 2
+  },
+  {
+    "country": "Japan",
+    "events": 529,
+    "unique_ips": 18
+  },
+  {
+    "country": "Armenia",
+    "events": 473,
+    "unique_ips": 12
+  },
+  {
+    "country": "Taiwan",
+    "events": 463,
+    "unique_ips": 20
   },
   {
     "country": "Bulgaria",
@@ -166,43 +171,23 @@
   },
   {
     "country": "Vietnam",
-    "events": 375,
+    "events": 382,
     "unique_ips": 19
   },
   {
+    "country": "Thailand",
+    "events": 350,
+    "unique_ips": 18
+  },
+  {
     "country": "Greece",
-    "events": 357,
+    "events": 309,
     "unique_ips": 6
   },
   {
-    "country": "Israel",
-    "events": 357,
-    "unique_ips": 12
-  },
-  {
-    "country": "Thailand",
-    "events": 344,
-    "unique_ips": 17
-  },
-  {
-    "country": "Chile",
-    "events": 330,
-    "unique_ips": 44
-  },
-  {
-    "country": "Spain",
-    "events": 304,
-    "unique_ips": 16
-  },
-  {
     "country": "Colombia",
-    "events": 292,
-    "unique_ips": 36
-  },
-  {
-    "country": "Uzbekistan",
-    "events": 287,
-    "unique_ips": 36
+    "events": 300,
+    "unique_ips": 37
   },
   {
     "country": "Slovakia",
@@ -210,14 +195,14 @@
     "unique_ips": 6
   },
   {
-    "country": "Poland",
-    "events": 270,
-    "unique_ips": 7
-  },
-  {
     "country": "Albania",
     "events": 255,
     "unique_ips": 8
+  },
+  {
+    "country": "Israel",
+    "events": 238,
+    "unique_ips": 11
   },
   {
     "country": "South Africa",
@@ -225,13 +210,33 @@
     "unique_ips": 29
   },
   {
-    "country": "Malaysia",
-    "events": 197,
-    "unique_ips": 25
+    "country": "Uzbekistan",
+    "events": 233,
+    "unique_ips": 35
   },
   {
-    "country": "Singapore",
-    "events": 192,
+    "country": "Poland",
+    "events": 217,
+    "unique_ips": 8
+  },
+  {
+    "country": "Chile",
+    "events": 212,
+    "unique_ips": 42
+  },
+  {
+    "country": "Spain",
+    "events": 196,
+    "unique_ips": 14
+  },
+  {
+    "country": "Malaysia",
+    "events": 195,
+    "unique_ips": 26
+  },
+  {
+    "country": "Egypt",
+    "events": 191,
     "unique_ips": 11
   },
   {
@@ -240,24 +245,14 @@
     "unique_ips": 38
   },
   {
-    "country": "Egypt",
-    "events": 185,
-    "unique_ips": 10
-  },
-  {
-    "country": "Iraq",
-    "events": 182,
+    "country": "Singapore",
+    "events": 186,
     "unique_ips": 11
   },
   {
     "country": "Venezuela",
-    "events": 180,
-    "unique_ips": 19
-  },
-  {
-    "country": "Hong Kong",
-    "events": 173,
-    "unique_ips": 28
+    "events": 178,
+    "unique_ips": 18
   },
   {
     "country": "Tanzania",
@@ -265,19 +260,24 @@
     "unique_ips": 3
   },
   {
-    "country": "Tunisia",
-    "events": 159,
-    "unique_ips": 18
-  },
-  {
     "country": "Jordan",
     "events": 145,
     "unique_ips": 6
   },
   {
+    "country": "Iraq",
+    "events": 130,
+    "unique_ips": 11
+  },
+  {
     "country": "United Arab Emirates",
-    "events": 117,
-    "unique_ips": 10
+    "events": 123,
+    "unique_ips": 11
+  },
+  {
+    "country": "Norway",
+    "events": 120,
+    "unique_ips": 2
   },
   {
     "country": "North Macedonia",
@@ -285,9 +285,9 @@
     "unique_ips": 2
   },
   {
-    "country": "Norway",
-    "events": 101,
-    "unique_ips": 2
+    "country": "Tunisia",
+    "events": 107,
+    "unique_ips": 18
   },
   {
     "country": "Azerbaijan",
@@ -340,24 +340,24 @@
     "unique_ips": 1
   },
   {
+    "country": "Peru",
+    "events": 46,
+    "unique_ips": 8
+  },
+  {
     "country": "Myanmar",
     "events": 46,
     "unique_ips": 9
   },
   {
-    "country": "Peru",
-    "events": 46,
-    "unique_ips": 9
-  },
-  {
-    "country": "Lithuania",
+    "country": "Bangladesh",
     "events": 44,
-    "unique_ips": 10
+    "unique_ips": 12
   },
   {
-    "country": "Belarus",
+    "country": "Ecuador",
     "events": 43,
-    "unique_ips": 5
+    "unique_ips": 8
   },
   {
     "country": "Romania",
@@ -370,14 +370,14 @@
     "unique_ips": 2
   },
   {
-    "country": "Switzerland",
-    "events": 38,
-    "unique_ips": 3
+    "country": "Belarus",
+    "events": 41,
+    "unique_ips": 4
   },
   {
-    "country": "Ecuador",
-    "events": 37,
-    "unique_ips": 7
+    "country": "Lithuania",
+    "events": 39,
+    "unique_ips": 9
   },
   {
     "country": "Uruguay",
@@ -385,9 +385,9 @@
     "unique_ips": 3
   },
   {
-    "country": "Bangladesh",
+    "country": "Switzerland",
     "events": 32,
-    "unique_ips": 10
+    "unique_ips": 2
   },
   {
     "country": "Finland",
@@ -395,24 +395,9 @@
     "unique_ips": 3
   },
   {
-    "country": "Bolivia",
-    "events": 27,
-    "unique_ips": 3
-  },
-  {
-    "country": "Togo",
-    "events": 26,
-    "unique_ips": 7
-  },
-  {
     "country": "Latvia",
-    "events": 26,
+    "events": 25,
     "unique_ips": 6
-  },
-  {
-    "country": "Philippines",
-    "events": 23,
-    "unique_ips": 7
   },
   {
     "country": "Moldova",
@@ -420,37 +405,37 @@
     "unique_ips": 2
   },
   {
-    "country": "Paraguay",
-    "events": 22,
-    "unique_ips": 9
-  },
-  {
     "country": "Australia",
     "events": 21,
     "unique_ips": 5
   },
   {
-    "country": "Seychelles",
-    "events": 18,
-    "unique_ips": 4
-  },
-  {
-    "country": "Guatemala",
-    "events": 14,
-    "unique_ips": 2
+    "country": "Togo",
+    "events": 20,
+    "unique_ips": 6
   },
   {
     "country": "Ireland",
-    "events": 12,
-    "unique_ips": 1
+    "events": 18,
+    "unique_ips": 2
   },
   {
-    "country": "Malta",
+    "country": "Paraguay",
+    "events": 18,
+    "unique_ips": 7
+  },
+  {
+    "country": "Burkina Faso",
     "events": 12,
     "unique_ips": 3
   },
   {
-    "country": "Burkina Faso",
+    "country": "Bolivia",
+    "events": 12,
+    "unique_ips": 2
+  },
+  {
+    "country": "Malta",
     "events": 12,
     "unique_ips": 3
   },
@@ -465,9 +450,19 @@
     "unique_ips": 3
   },
   {
+    "country": "Seychelles",
+    "events": 12,
+    "unique_ips": 3
+  },
+  {
     "country": "Gabon",
     "events": 12,
     "unique_ips": 3
+  },
+  {
+    "country": "Philippines",
+    "events": 12,
+    "unique_ips": 5
   },
   {
     "country": "Senegal",
@@ -490,12 +485,12 @@
     "unique_ips": 1
   },
   {
-    "country": "Qatar",
+    "country": "Libya",
     "events": 8,
     "unique_ips": 2
   },
   {
-    "country": "Nigeria",
+    "country": "Qatar",
     "events": 8,
     "unique_ips": 2
   },
@@ -503,6 +498,21 @@
     "country": "Costa Rica",
     "events": 8,
     "unique_ips": 3
+  },
+  {
+    "country": "Nigeria",
+    "events": 8,
+    "unique_ips": 2
+  },
+  {
+    "country": "Reunion",
+    "events": 6,
+    "unique_ips": 1
+  },
+  {
+    "country": "Bosnia and Herzegovina",
+    "events": 6,
+    "unique_ips": 1
   },
   {
     "country": "Barbados",
@@ -520,17 +530,17 @@
     "unique_ips": 1
   },
   {
-    "country": "Kuwait",
-    "events": 6,
-    "unique_ips": 1
-  },
-  {
     "country": "Unknown",
     "events": 6,
     "unique_ips": 1
   },
   {
     "country": "Guadeloupe",
+    "events": 6,
+    "unique_ips": 1
+  },
+  {
+    "country": "Kuwait",
     "events": 6,
     "unique_ips": 1
   },
@@ -550,14 +560,9 @@
     "unique_ips": 1
   },
   {
-    "country": "Reunion",
+    "country": "Palestine",
     "events": 6,
-    "unique_ips": 1
-  },
-  {
-    "country": "Bosnia and Herzegovina",
-    "events": 6,
-    "unique_ips": 1
+    "unique_ips": 2
   },
   {
     "country": "Equatorial Guinea",
@@ -565,7 +570,7 @@
     "unique_ips": 2
   },
   {
-    "country": "Palestine",
+    "country": "Bahrain",
     "events": 4,
     "unique_ips": 1
   },
@@ -595,7 +600,12 @@
     "unique_ips": 2
   },
   {
-    "country": "Libya",
+    "country": "Dominican Republic",
+    "events": 2,
+    "unique_ips": 1
+  },
+  {
+    "country": "Kosovo",
     "events": 2,
     "unique_ips": 1
   },
@@ -616,16 +626,6 @@
   },
   {
     "country": "Mongolia",
-    "events": 2,
-    "unique_ips": 1
-  },
-  {
-    "country": "Dominican Republic",
-    "events": 2,
-    "unique_ips": 1
-  },
-  {
-    "country": "Kosovo",
     "events": 2,
     "unique_ips": 1
   }
