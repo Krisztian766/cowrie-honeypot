@@ -5,7 +5,15 @@ du -sh /opt/cowrie/downloads /opt/cowrie/log 2>/dev/null
 
 echo
 echo "=== Letöltött fájlok (zsákmány) ==="
-ls -la /opt/cowrie/downloads | tail -n +2
+_dl=/opt/cowrie/downloads
+_total=$(find "$_dl" -maxdepth 1 -type f | wc -l)
+_real=$(find "$_dl" -maxdepth 1 -type f ! -size 0 | wc -l)
+_empty=$(find "$_dl" -maxdepth 1 -type f -size 0 | wc -l)
+echo "Összes fájl: $_total  (valódi tartalom: $_real, 0 bájtos redir-marker: $_empty)"
+echo "Méret: $(du -sh "$_dl" | cut -f1)"
+echo
+echo "-- 20 legutóbbi nem-üres minta --"
+find "$_dl" -maxdepth 1 -type f ! -size 0 -printf '%TY-%Tm-%Td %TH:%TM  %10s  %f\n' | sort | tail -20
 
 echo
 echo "=== Top 10 támadó IP (ma) ==="
