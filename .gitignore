@@ -1,4 +1,15 @@
+# Secrets / local env
 *.env
+.env
 secrets/
+
+# Python
 __pycache__/
 *.pyc
+
+# Captured malware samples — never publish live binaries
+samples/
+*.zip
+
+# Raw rotating logs are large; keep out of future commits
+# (existing logs tracked intentionally as the research dataset)
