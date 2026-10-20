@@ -6,7 +6,7 @@ custom Telegram alerting and automated dropper-chain follow-through.
 
 **[Live threat report →](https://krisztian766.github.io/cowrie-honeypot/)** — auto-generated
 charts of attack volume over time, attacker countries, top credentials, and identified malware
-families, built straight from the raw logs in this repo (`code/generate_report.py` +
+families, generated from the raw honeypot logs by (`code/generate_report.py` +
 `code/geoip_lookup.py` + `code/render_report.py`).
 
 ## At a glance
@@ -53,8 +53,6 @@ data/       seen_hashes.json, fetched_urls.json — notifier state/dedup caches
             daily_volume.json, ip_counts.json, ip_geo.json, country_totals.json,
             credential_counts.json, downloads_timeline.json, malware_classification.json —
             structured data behind the live report
-logs/       raw Cowrie JSON event logs, gzip-compressed, all rotations 2026-07-14→present
-samples/    samples.zip — all 87 captured files, password-protected (see below)
 ```
 
 ## Threat report pipeline (`code/generate_report.py`, `geoip_lookup.py`, `render_report.py`)
@@ -122,9 +120,9 @@ Three scripts turn the raw logs into the [live report](https://krisztian766.gith
 
 ## Captured activity
 
-Within hours of going live, two distinct attack chains were observed and are represented in
-`samples/samples.zip` (password: `infected` — standard convention so nothing auto-executes or gets
-flagged/quarantined on download):
+Within hours of going live, two distinct attack chains were observed. The captured binaries
+themselves are **not** published in this repo (see "Explicitly excluded" below) — only their
+hashes and classifications:
 
 1. **SSH persistence worm** ("mdrfckr") on port 2222 — wipes `~/.ssh`, drops the attacker's own
    public key into `authorized_keys` for passwordless return access. Seen from 10+ distinct source
@@ -138,23 +136,26 @@ flagged/quarantined on download):
    self-propagation shell chain seen live on the honeypot, plus the classic Mirai `GET /dlr.`
    C2-callback string.
 
-Samples are provided **for static analysis only** — never execute them, including on this host.
-VirusTotal's `/files/{hash}/behaviours` endpoint (already-sandboxed) or an isolated VM/container
-is the recommended way to get dynamic behavior data.
+The captured binaries are intentionally **not** distributed here. Sample hashes and VirusTotal
+classifications are documented in `data/` (`downloads_timeline.json`, `malware_classification.json`);
+use VT's `/files/{hash}/behaviours` endpoint or an isolated VM if you need dynamic behaviour data.
 
-## Raw data (`logs/`, `data/`)
+## Data (`data/`)
 
-- `logs/cowrie.json*.gz` — the complete, unfiltered event log across every rotation captured so
-  far (2026-07-14 → present): every login attempt, session, download, and command with timestamp
-  and source IP. Gzip-compressed (10-20x) to stay well under GitHub's per-file limit as the raw
-  logs grew past several hundred MB/day at peak traffic; this is the source of truth everything
-  else in `data/` is derived from.
+The raw Cowrie event logs (multi-GB at peak) are **not** committed — this repo ships the distilled,
+structured results instead:
+
 - `data/attacker_ips_full.txt` / `data/credentials_full.txt` — full breakdowns (not just a top-N
-  sample) of every unique attacker IP and every unique username/password combination tried,
-  regenerated from the raw logs above.
+  sample) of every unique attacker IP and every unique username/password combination tried.
+- `data/daily_volume.json`, `ip_counts.json`, `ip_geo.json`, `country_totals.json`,
+  `credential_counts.json`, `downloads_timeline.json`, `malware_classification.json` — the
+  structured data behind the live report, all derived from the raw logs.
 
 ## Explicitly excluded from this repo
 
 - `secrets/telegram.env` (Telegram bot token, chat ID, VirusTotal API key) — real credentials,
   never committed, `.gitignore`d as a backstop. This is the one boundary kept firm regardless of
   what else gets published here.
+- **Raw event logs** (`logs/*.gz`) and **captured malware binaries** (`samples/`) — deliberately
+  kept out of the repo to keep it lean and to avoid distributing live malware. The structured
+  results in `data/` plus the live report are the published output.

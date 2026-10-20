@@ -11,5 +11,6 @@ __pycache__/
 samples/
 *.zip
 
-# Raw rotating logs are large; keep out of future commits
-# (existing logs tracked intentionally as the research dataset)
+# Raw rotating honeypot logs — not published (kept lean; see README)
+logs/
+*.gz
